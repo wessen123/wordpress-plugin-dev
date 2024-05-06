@@ -501,22 +501,18 @@ class AOTFW_Sendmail_Order_Task extends AOTFW_Abstract_Order_Task {
 
 
 
-     $message = apply_filters( 'wp_mail_content', $message );
-     $to = 'wessen333@gmail.com';
-     $subject = 'Test Email';
-     $message = 'This is a test email.';
+
      $headers = array(
          'Content-Type: text/html; charset=UTF-8',
-         'From: Your Name <Wessen@admin.wondwessenhaileinnovates.net>>'
+         'From: Your Name <Wessen@admin.wondwessenhaileinnovates.net>'
         
      );
    
      
-     wp_mail( $to, $subject, $message, $headers);
+   
     foreach ( $recipients as $recipient ) {
-       wp_mail( $recipient, $subject, $message, $headers );
-           //var_dump(    wp_mail( $recipient, $subject, $message, $headers ));
-     //die("stop");
+       wp_mail( $recipient, $subject, $message,$headers );
+           
     }
 
   }
