@@ -18,13 +18,13 @@ if ( !class_exists( 'AOTFW_Order_Task_Factory' ) ) {
 
    *
 
-   * @since      1.0.0
+   * @since      2.0.0
 
    * @package    Automatic_Order_Tasks
 
    * @subpackage Automatic_Order_Tasks/settings
 
-   * @author     Steven Mønsted Nielsen (contact@webirium.com)
+   * @author     Wondwessen H (wessen333@gmail.com)
 
    */
 

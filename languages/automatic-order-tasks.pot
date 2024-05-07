@@ -1,9 +1,9 @@
-# Copyright (C) 2023 Steven Mønsted Nielsen
-# This file is distributed under the same license as the Automatic Order Tasks For WooCommerce plugin.
+
+#  the Entro Automatic Order Tasks For WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Automatic Order Tasks For WooCommerce 1.2.1\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/automatic-order-tasks\n"
+"Project-Id-Version: Entro Automatic Order Tasks For WooCommerce 2.0.0\n"
+"Report-Msgid-Bugs-To:https://wondwessenhaileinnovates.ne\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -15,11 +15,11 @@ msgstr ""
 "X-Domain: aotfw-domain\n"
 
 #. Plugin Name of the plugin
-msgid "Automatic Order Tasks For WooCommerce"
+msgid " Entro Automatic Order Tasks For WooCommerce"
 msgstr ""
 
 #. Plugin URI of the plugin
-msgid "https://webirium.com"
+msgid "https://wondwessenhaileinnovates.ne"
 msgstr ""
 
 #. Description of the plugin
@@ -27,7 +27,7 @@ msgid "Simplify order management. Create tasks that run automatically, whenever 
 msgstr ""
 
 #. Author of the plugin
-msgid "Steven Mønsted Nielsen"
+msgid "wondwessen Haile"
 msgstr ""
 
 #: inc/class-settings.php:43

@@ -1,6 +1,6 @@
-# Automatic Order Tasks For WooCommerce
+# Entro Automatic Order Tasks For WooCommerce
 
-Stable tag: 1.3.1 
+Stable tag: 2.0.0 
 Requires at least: 5.6  
 Tested up to: 6.4.3 
 Requires PHP: 7.4  
@@ -12,7 +12,7 @@ Contributors: wondwessen
 
 Create automatic tasks that run whenever a WooCommerce order reaches an order status of your choice.
 
-You can send emails, create posts, add custom order fields and much more. Each task is customizable, allowing you to insert and edit your own content. You can also add powerful tags that insert dynamic values such as order details, customer names and more.
+You can send emails, Send to Entro API, add custom order fields and much more. Each task is customizable, allowing you to insert and edit your own content. You can also add powerful tags that insert dynamic values such as order details, customer names and more.
 
 
 ### Features

@@ -38,21 +38,12 @@ if ( !class_exists( 'AOTFW_Order_Status_Listener' ) ) {
 
     }
 
-    function get_delivery_method_for_order($order) {
-      // Get the shipping methods for the order
-      $shipping_methods = $order->get_shipping_methods();
-      
-      // Extract the first shipping method (assuming one shipping method per order)
-      $shipping_method = reset($shipping_methods);
-      
-      // Get the delivery method name
-      return $shipping_method['name'];
-  }
 
     
 
     public function action__do_tasks( $order_id, $old_status, $new_status ) {
-
+      if ($order_id==35117){
+       
       $this->require_tasks(); // requiring tasks late, as the file is only necessary when executing tasks.
 
       
@@ -62,8 +53,11 @@ if ( !class_exists( 'AOTFW_Order_Status_Listener' ) ) {
       $settings_api = AOTFW_Settings_Api::get_instance();
 
       $order = wc_get_order( $order_id );
-     
-     
+      echo '<pre>'; // Output formatted JSON
+     print_r ($order);
+       echo '</pre>';
+  //   echo$order;
+           die("this");
       
 
       $new_status = 'wc-' . $new_status; // add the wc prefix
@@ -71,10 +65,11 @@ if ( !class_exists( 'AOTFW_Order_Status_Listener' ) ) {
 
 
       $config = $settings_api->get_config( $new_status );
-
+     
     
 
       if ( !empty( $config ) && is_array( $config ) ) {
+        $delivery_methods_array = array(); // Initialize an empty array
 
         foreach ( $config as $task_config ) {
 
@@ -83,19 +78,25 @@ if ( !class_exists( 'AOTFW_Order_Status_Listener' ) ) {
   
 
             if ( $this->should_run( $order_id, $task_config ) ) {
-
+           
               $task = $task_factory->get( $task_config['id'], $task_config['fields']);
-            
+             
+              if (isset($task_config['fields']['delivery_method']) ) {
+                // Iterate through each delivery method and push it into the array
+              
+                    $delivery_methods_array[] = $task_config['fields']['delivery_method'];
+                
+            }
               $task->do_task( $order );
-
+              
             }
 
           }
 
         }
-
+           
       }
-
+    }   
     }
 
 
@@ -109,7 +110,8 @@ if ( !class_exists( 'AOTFW_Order_Status_Listener' ) ) {
      */
 
     private function should_run( $order_id, $task_config ) {
-
+      echo $order_id. "<br>";
+      die("this is other ");
       if ( empty($task_config['metaSettings']) ) // return true if no meta setting limiters are set.
 
         return true;
@@ -118,8 +120,7 @@ if ( !class_exists( 'AOTFW_Order_Status_Listener' ) ) {
 
       $meta_settings = $task_config['metaSettings'];
 
-    //var_dump($meta_settings);
-   // die('addd');
+    
 
       if ( $meta_settings['runonce'] === true && !empty( $task_config['uniqid'] ) ) {
 

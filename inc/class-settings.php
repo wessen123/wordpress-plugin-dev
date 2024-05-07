@@ -20,7 +20,7 @@ if (!class_exists('AOTFW_Settings')) {
 
    *
 
-   * @since      1.0.0
+   * @since      2.0.0
 
    * @package    Automatic_Order_Tasks
 
@@ -88,19 +88,21 @@ if (!class_exists('AOTFW_Settings')) {
                   <select name="eam-order-stage" id="eam-order-stage">
 
                     <?php
-                    // Define the order statuses you want to include
-                    $order_statuses = array(
-                      'wc-completed' => __('Completed', 'woocommerce'),
-                      'wc-processing' => __('Processing', 'woocommerce'),
-                      'wc-waiting-transport' => __('Waiting Transport', 'woocommerce')
-                    );
 
-                    foreach ($order_statuses as $order_status => $order_label) {
+                    $this->order_statuses = wc_get_order_statuses();
+
+                    foreach ($this->order_statuses as $order_status => $order_label) {
+
                     ?>
-                      <option value="<?php echo esc_attr($order_status) ?>"><?php echo esc_html($order_label) ?></option>
+
+                      <option value="<?php echo esc_attr( $order_status ) ?>"><?php echo esc_html( $order_label ) ?></option>
+
                     <?php
+
                     }
+
                     ?>
+
                   </select>
 
 
@@ -150,7 +152,7 @@ if (!class_exists('AOTFW_Settings')) {
         ?>
         
         <div class="container">
-            <h2>Custom Orders</h2>
+            <h2>Processed Orders</h2>
             <table id="example" class="display" style="width:100%">
                 <thead>
                     <tr>
@@ -183,7 +185,7 @@ if (!class_exists('AOTFW_Settings')) {
             </table>
         </div>
      
-<table id="example" class="display" style="width:100%">
+
         <thead>
             <tr>
                 <th>Name</th>

@@ -417,8 +417,7 @@ if ( !class_exists( 'AOTFW_Sendsms_Order_Task' ) ) {
         $this->add_tag( $c, 'billing phone', function() use ($order) {
         $phone = $order->get_billing_phone();
         $country_code = $order->get_billing_country(); // Assuming you have a method to get the country code
-        var_dump($country_code . $phone);
-        die('stupid');
+        
           return $country_code . $phone; 
 
       });
@@ -1570,7 +1569,7 @@ if ( !class_exists('AOTFW_Sendentro_Order_Task') ) {
             $status_code = wp_remote_retrieve_response_code($response);
             if ($status_code >= 200 && $status_code < 300) {
                 // Order sent successfully
-                 print_r($response);
+                print_r($response);
                 //return true;
                  die("done");
             } else {
