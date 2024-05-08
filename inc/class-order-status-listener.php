@@ -55,11 +55,11 @@ if (!class_exists('AOTFW_Order_Status_Listener')) {
         $settings_api = AOTFW_Settings_Api::get_instance();
 
         $order = wc_get_order($order_id);
-        echo '<pre>'; // Output formatted JSON
-        print_r($order);
-        echo '</pre>';
+      //  echo '<pre>'; // Output formatted JSON
+       // print_r($order);
+       // echo '</pre>';
         //   echo$order;
-        die("this");
+        //die("this");
 
 
         $new_status = 'wc-' . $new_status; // add the wc prefix
