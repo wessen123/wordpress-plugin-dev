@@ -140,61 +140,16 @@ if (!class_exists('AOTFW_Settings')) {
 
       </div>
 <div> 
- <?php
-// Output notification settings content here
-        echo '<h2>Notification Settings</h2>';
-       
-        // Fetch custom orders
-        global $wpdb;
-        $table_name = $wpdb->prefix . 'entrowoo_custom_ordersa';
-    
-        // Select data from the custom table
-        $query = "SELECT * FROM $table_name";
-        $results = $wpdb->get_results($query, ARRAY_A);
-        ?>
-        
-        <div class="container">
-            <h2>Processed Orders</h2>
-            <table id="example" class="display" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>Order ID</th>
-                        <th>Generated Code</th>
-                        <th>Customer Name</th>
-                        <th>Customer Email</th>
-                        <th>Customer Phone</th>
-                        <th>Country Code</th>
-                        <th>Order Status</th>
-                        <th>Order Date</th>
-                        <!-- Add other necessary columns here -->
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($results as $order) : ?>
-                        <tr>
-                            <td><?php echo @$order['order_id']; ?></td>
-                            <td><?php echo @$order['codeGenerated']; ?></td>
-                            <td><?php echo @$order['bookingCustomerName']; ?></td>
-                            <td><?php echo @$order['bookingCompanyEmail']; ?></td>
-                            <td><?php echo @$order['bookingCustomerPhone']; ?></td>
-                            <td><?php echo @$order['country']; ?></td>
-                            <td><?php echo @$order['order_status']; ?></td>
-                            <td><?php echo @$order['bookingStartsAtTime']; ?></td>
-                            <!-- Add other necessary cells here -->
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
-     
 
-        
-    </table></div>
+
       <div id="aotfw-msg-box"></div>
 
-<?php
 
-    }
+      <?php
+
+}
+
+
 
     public function notification_settings_page_callback()
     {
@@ -202,56 +157,19 @@ if (!class_exists('AOTFW_Settings')) {
         echo '<h2>Notification Settings</h2>';
     
         // Fetch custom orders
-        global $wpdb;
-        $table_name = $wpdb->prefix . 'entrowoo_custom_ordersa';
-    
-        // Select data from the custom table
-        $query = "SELECT * FROM $table_name";
-        $results = $wpdb->get_results($query, ARRAY_A);
-    
-        ?>
-        <div class="container">
-            <h2>Custom Orders</h2>
-            <table id="example" class="display" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>Order ID</th>
-                        <th>Generated Code</th>
-                        <th>Customer Name</th>
-                        <th>Customer Email</th>
-                        <th>Customer Phone</th>
-                        <th>Country Code</th>
-                        <th>Order Status</th>
-                        <th>Order Date</th>
-                        <!-- Add other necessary columns here -->
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($results as $order) : ?>
-                        <tr>
-                            <td><?php echo @$order['order_id']; ?></td>
-                            <td><?php echo @$order['codeGenerated']; ?></td>
-                            <td><?php echo @$order['bookingCustomerName']; ?></td>
-                            <td><?php echo @$order['bookingCompanyEmail']; ?></td>
-                            <td><?php echo @$order['bookingCustomerPhone']; ?></td>
-                            <td><?php echo @$order['countryCode']; ?></td>
-                            <td><?php echo @$order['orderStatus']; ?></td>
-                            <td><?php echo @$order['bookingStartsAtTime']; ?></td>
-                            <!-- Add other necessary cells here -->
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
-        <?php
+        
     }
     
 
     // Callback function for log submenu
     public function view_logs_page_callback()
     {
-      // Output view logs content here
-      echo '<h2>View Logs</h2>';
+     
+
+
+      echo '<h2>log page</h2>';
+
+
     }
 
 
@@ -275,7 +193,7 @@ if (!class_exists('AOTFW_Settings')) {
             56
         );
     
-        add_submenu_page('entro-woo-tasks', 'Notification Settings', 'Notification Settings', 'manage_options', 'notification-settings', array($this, 'notification_settings_page_callback'));
+        add_submenu_page('entro-woo-tasks', 'Notification', 'Notification ', 'manage_options', 'notification', array($this, 'notification_settings_page_callback'));
         add_submenu_page('entro-woo-tasks', 'View Logs', 'View Logs', 'manage_options', 'view-logs', array($this, 'view_logs_page_callback'));
     });
     

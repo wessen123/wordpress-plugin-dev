@@ -67,12 +67,11 @@ if (!class_exists('AOTFW_Order_Status_Listener')) {
 
 
         if (!empty($config) && is_array($config)) {
-          $delivery_methods_array = array(); // Initialize an empty array
+          
 
           foreach ($config as $task_config) {
-
+         
             if (!empty($task_config) && isset($task_config['id'])) {
-
 
 
               if ($this->should_run($order_id, $task_config)) {
@@ -81,17 +80,40 @@ if (!class_exists('AOTFW_Order_Status_Listener')) {
 
                 if (isset($task_config['fields']['delivery_method'])) {
                   // Iterate through each delivery method and push it into the array
-
-                  $delivery_methods_array[] = $task_config['fields']['delivery_method'];
+                  $filter_values =  $this->convert_to_slug_array($task_config['fields']['delivery_method']);
+                 
+                  if ($order && isset($order->line_items)) {
+                    foreach ($order->line_items as $item) {
+                        if (isset($item->meta_data)) {
+                            foreach ($item->meta_data as $meta) {
+                                if ($meta->key === 'pa_afhendingarmati' && in_array($meta->value, $filter_values)) {
+                                    
+                                    $task->do_task($order);
+                                }
+                            }
+                        }
+                    }
                 }
+                
+                
                 $task->do_task($order);
+                  
+                }
+                //$task->do_task($order);
               }
             }
           }
+    
         }
       }
     }
-
+    function convert_to_slug_array($values) {
+      $slug_array = [];
+      foreach ($values as $value) {
+          $slug_array[] = sanitize_title($value);
+      }
+      return $slug_array;
+  }
 
 
     /**
@@ -104,8 +126,7 @@ if (!class_exists('AOTFW_Order_Status_Listener')) {
 
     private function should_run($order_id, $task_config)
     {
-      // echo $order_id . "<br>";
-      // die("this is other ");
+     
       if (empty($task_config['metaSettings'])) // return true if no meta setting limiters are set.
 
         return true;
