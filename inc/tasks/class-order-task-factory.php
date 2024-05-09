@@ -36,22 +36,22 @@ if ( !class_exists( 'AOTFW_Order_Task_Factory' ) ) {
 
       'sendmail' => 'AOTFW_Sendmail_Order_Task',
 
-      'createpost' => 'AOTFW_Createpost_Order_Task',
+     // 'createpost' => 'AOTFW_Createpost_Order_Task',
       'storeorder' => 'AOTFW_Storeorder_Order_Task',
 
 
       'logtofile' => 'AOTFW_Logtofile_Order_Task',
 
-      'customorderfield' => 'AOTFW_Customorderfield_Order_Task',
+      //'customorderfield' => 'AOTFW_Customorderfield_Order_Task',
 
-      'changeshipping' => 'AOTFW_Changeshipping_Order_Task',
+      //'changeshipping' => 'AOTFW_Changeshipping_Order_Task',
 
       'sendwebhook' => 'AOTFW_Sendwebhook_Order_Task',
 
       'trashorder' => 'AOTFW_Trashorder_Order_Task',
       'filterorder' => 'AOTFW_Filterorder_Order_Task',
       'sendentro' => 'AOTFW_Sendentro_Order_Task' ,// Add the new task here
-      'orderdelivery' => 'AOTFW_Orderdelivery_Order_Task',
+      //'orderdelivery' => 'AOTFW_Orderdelivery_Order_Task',
       'sendsms' => 'AOTFW_Sendsms_Order_Task',
 
     );

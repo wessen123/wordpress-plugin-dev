@@ -43,44 +43,9 @@ if (!class_exists('AOTFW_Order_Status_Listener')) {
 
     public function action__do_tasks($order_id, $old_status, $new_status)
     {
-      $order_ids_to_filter = [208,179,35117, 35109, 35087, 35086, 35081, 35079, 35071, 34973, 34971];
+      $order_ids_to_filter = [179,35117, 35109, 35087, 35086, 35081, 35079, 35071, 34973, 34971];
       if (in_array($order_id, $order_ids_to_filter)) {
-        $attributes = wc_get_attribute_taxonomies();
 
-        // Check if attributes exist
-        if (!$attributes) {
-            return array();
-        }
-    
-        // Initialize an empty array to store attributes and their nested attributes
-        $attributes_with_nested = array();
-    
-        // Loop through each attribute
-        foreach ($attributes as $attribute) {
-            // Check if the attribute is 'afhendingarmati'
-            if ($attribute->attribute_name === 'afhendingarmati') {
-                // Get the terms within 'afhendingarmati' attribute
-                $terms = get_terms(array(
-                    'taxonomy' => 'pa_afhendingarmati',
-                    'hide_empty' => false,
-                ));
-    
-                // Check if terms exist
-                if ($terms && !is_wp_error($terms)) {
-                    // Store the terms as nested attributes
-                    $nested_attributes = array();
-                    foreach ($terms as $term) {
-                        $nested_attributes[] = $term->name;
-                    }
-    
-                    // Store the attribute and its nested attributes
-                    $attributes_with_nested[$attribute->attribute_name] = $nested_attributes;
-                }
-            } 
-        }
-    
-        //return $attributes_with_nested;
-      
         $this->require_tasks(); // requiring tasks late, as the file is only necessary when executing tasks.
 
 
@@ -92,7 +57,10 @@ if (!class_exists('AOTFW_Order_Status_Listener')) {
         $order = wc_get_order($order_id);
      
 
-
+        echo '<pre>';
+        print_r($order);
+        echo '</pre>';
+        die("stop");
         $new_status = 'wc-' . $new_status; // add the wc prefix
 
 
@@ -113,13 +81,7 @@ if (!class_exists('AOTFW_Order_Status_Listener')) {
               if ($this->should_run($order_id, $task_config)) {
 
                 $task = $task_factory->get($task_config['id'], $task_config['fields']);
-                echo '<pre>';
-                print_r ($order);
-                //print_r ($nested_attributes);
-                echo '</pre>';
-                die('work');
-                
-                
+
                 if (isset($task_config['fields']['delivery_method'])) {
                   // Iterate through each delivery method and push it into the array
 
