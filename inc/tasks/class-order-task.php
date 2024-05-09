@@ -1537,22 +1537,31 @@ if ( !class_exists('AOTFW_Sendentro_Order_Task') ) {
 
         // Prepare order data to send to the API endpoint
         $order_data = array(
-            'order_id' => $order_id,
-            'codeGenerated' => $random_code,
-            'bookingCustomerName' => $customer_name,
-            'bookingCompanyEmail' => $bill['email'],
-            'bookingCustomerPhone' => $bill['phone'],
-            'countryCode' => $bill['country'],
-            'orderStatus' => $order_status,
-            'bookingStartsAtTime' => $order_date,
-            // Add other necessary fields here...
+             "bookingStartsAtTime"=> "1711621200",
+             "bookingEndsAtTime"=> "1711624500",
+             "bookingStartDate"=> "2024/02/19",
+             "bookingEndDate"=>"2024/02/20",
+             'bookingCode' => $random_code,
+             'bookingCustomerName' => $customer_name,
+             'bookingCustomerPhone' => $bill['phone'],
+             'bookingCompanyEmail' => $bill['email'],
+             'Connection'=> "Entrowoo plugin test",
+             'status' => $order_status,
+             'company'=> 'Matland test',
+             "userId"=>$order->id,
+            // 'bookingStartsAtTime' => $order_date,
+             'Integration'=> 'Entrowoo plugin test',
+             'company_ID'=> '1111'
+            
+
+
+        
         );
-        //var_dump($order_data );
-       // die('here');
-        //var_dump(  $order_data);
-        // die("here");
+
+        
+       
         // Send order data to the API endpoint
-        $response = wp_remote_post($finalUrl['delivery_url'], array(
+        $response = wp_remote_post('https://eunitstest.onrender.com/api/addbooking', array(
             'method'    => 'POST',
             'headers'   => array(
                 'Content-Type' => 'application/json',
@@ -1562,19 +1571,21 @@ if ( !class_exists('AOTFW_Sendentro_Order_Task') ) {
 
         // Check if the request was successful
         if (is_wp_error($response)) {
-            // Handle error
+           
             return false; // Return false to indicate failure
-        } else {
+        
+          } else {
             // Process response
             $status_code = wp_remote_retrieve_response_code($response);
+           
             if ($status_code >= 200 && $status_code < 300) {
-                // Order sent successfully
-                print_r($response);
-                //return true;
-                 die("done");
+               
+                return true;
+              
             } else {
-                // Order sending failed
-                return false;
+               
+               return false;
+           
             }
         }
     }

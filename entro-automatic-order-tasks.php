@@ -4,7 +4,7 @@
  * @package   Automatic_Order_Tasks
  */
 /*
-Plugin Name: Entrowoo order Automation
+Plugin Name: Entrowoo
 Plugin URI: https://github.com/wessen123
 Description: Automation toolkit for seamless integration of online stores with Entro platform
 Version: 2.0.0
@@ -15,7 +15,7 @@ Author URI: https://wondwessenhaileinnovates.net/
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 /** Globals **/
-define('AOTFW_PLUGIN_NAME', 'Entro Automatic Order Tasks');
+define('AOTFW_PLUGIN_NAME', 'EntroWoo');
 define('EAOTFW_VERSION', '2.0.0');
 define('AOTFW_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('AOTFW_PLUGIN_PATH', wp_normalize_path(plugin_dir_path(__FILE__)));

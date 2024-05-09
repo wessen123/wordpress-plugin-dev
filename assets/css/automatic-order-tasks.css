@@ -336,9 +336,9 @@ div#eam-order-controls::before {
 
 #eam-order-options .accordion {
 
-  background-color: #eee;
+  background-color: #3c434a;
 
-  color: #666;
+  color: #ffffff;
 
   cursor: pointer;
 
@@ -354,9 +354,9 @@ div#eam-order-controls::before {
 
   transition: 0.4s;
 
-  font-weight: 400;
+  font-weight: 500;
 
-  font-size: .92rem;
+  font-size: 1rem;
 
   border-radius: 0;
 
@@ -378,14 +378,13 @@ div#eam-order-controls::before {
 
 #eam-order-options .accordion:hover {
 
-  background-color: #f2f2f2;
+  background-color: #1f2225;
 
 }
 
 #eam-order-options .accordion.active {
 
-  background-color: #f2f2f2;
-
+  background-color: #1f2225;
   border-top-left-radius: 6px;
 
   border-top-right-radius: 6px;
@@ -398,7 +397,7 @@ div#eam-order-controls::before {
 
   content: '#' counter(number) ' ';
 
-  font-weight: 600;
+  font-weight: 700;
 
   font-size: 1.1em;
 
@@ -426,11 +425,11 @@ div#eam-order-controls::before {
 
   content: '\f105';
 
-  font-size: 15px;
+  font-size: 18px;
 
   font-weight: 900;
 
-  color: #777;
+  color: #ffffff;
 
   float: right;
 
@@ -821,7 +820,24 @@ div#eam-order-controls::before {
   cursor: pointer;
 
 }
+#eam-order-options .eam-filterbutton {
 
+  padding: .9rem 2.5rem;
+
+  border: 0;
+
+  border-radius: 4px; 
+
+  color: #FFF;
+
+  font-size: 1rem;
+
+  font-weight: 600;
+
+  cursor: pointer;
+  margin-left: 20px;
+
+}
 #eam-order-options .task-meta-settings-ok-btn {
 
   display: block;
@@ -920,7 +936,7 @@ div#eam-order-controls::before {
 
 .new-task-window .grid-container {
 
-    width: 550px;
+    width: 750px;
 
     position: relative;
 
@@ -938,7 +954,7 @@ div#eam-order-controls::before {
 
     overflow: hidden;
 
-    border-top: .5rem solid #b7a5ff;
+    border-top: .5rem solid #a5ffee;
 
   }
 

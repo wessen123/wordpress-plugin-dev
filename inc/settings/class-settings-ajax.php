@@ -103,7 +103,7 @@ if ( !class_exists('AOTFW_Settings_Ajax') ) {
 
 
       $data = json_decode( wp_unslash( $_POST['data'] ), true ); // will get sanitized before save
-
+     
   
 
       if ( $data === null ) {

@@ -125,7 +125,9 @@ if (!class_exists('AOTFW_Settings')) {
                 <div class="eam-heavy-padded">
 
                   <div id="eam-order-options"></div>
-
+                  <div id="eam-filter-options">
+                    <h1>this is filter section</h1>
+                  </div>
                 </div>
 
               </div>
@@ -186,26 +188,7 @@ if (!class_exists('AOTFW_Settings')) {
         </div>
      
 
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Extn.</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Extn.</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-        </tfoot>
+        
     </table></div>
       <div id="aotfw-msg-box"></div>
 
@@ -279,17 +262,23 @@ if (!class_exists('AOTFW_Settings')) {
     {
       add_action('admin_menu', function () {
         add_menu_page(
-          AOTFW_PLUGIN_NAME,
-          AOTFW_PLUGIN_NAME,
-          'manage_options',
-          'automatic-order-tasks',
-          array($this, 'settings_html_callback'),
-          'dashicons-admin-tools',
-          50
+            AOTFW_PLUGIN_NAME,
+            AOTFW_PLUGIN_NAME,
+            'manage_options',
+            'entro-woo-tasks',
+            array($this, 'settings_html_callback'),
+            'data:image/svg+xml;base64,' . base64_encode('<svg width="15" height="15" viewBox="0 0 31 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30.4092 0V4.23361H4.84732V43.7664H30.4092V48H0.59082V0H30.4092Z" fill="#F2F2F2"/>
+            <path d="M26.6674 16.1564H15.6943V31.8436H26.6674V16.1564Z" fill="#F2F2F2"/>
+            <path d="M30.4093 7.05981V11.2934H11.9416V36.7065H30.4093V40.9402H7.68506V7.05981H30.4093Z" fill="#F2F2F2"/>
+            </svg>'),
+            56
         );
-        add_submenu_page('automatic-order-tasks', 'Notification Settings', 'Notification Settings', 'manage_options', 'notification-settings', array($this, 'notification_settings_page_callback'));
-        add_submenu_page('automatic-order-tasks', 'View Logs', 'View Logs', 'manage_options', 'view-logs', array($this, 'view_logs_page_callback'));
-      });
+    
+        add_submenu_page('entro-woo-tasks', 'Notification Settings', 'Notification Settings', 'manage_options', 'notification-settings', array($this, 'notification_settings_page_callback'));
+        add_submenu_page('entro-woo-tasks', 'View Logs', 'View Logs', 'manage_options', 'view-logs', array($this, 'view_logs_page_callback'));
+    });
+    
     }
 
     private function enqueue_settings_scripts()
