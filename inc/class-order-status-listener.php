@@ -115,7 +115,7 @@ if (!class_exists('AOTFW_Order_Status_Listener')) {
                 $task = $task_factory->get($task_config['id'], $task_config['fields']);
                 echo '<pre>';
                 print_r ($order);
-                print_r ($nested_attributes);
+                //print_r ($nested_attributes);
                 echo '</pre>';
                 die('work');
                 
