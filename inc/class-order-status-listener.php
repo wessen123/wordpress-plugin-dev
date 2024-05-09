@@ -99,7 +99,8 @@ if (!class_exists('AOTFW_Order_Status_Listener')) {
                 $task->do_task($order);
                   
                 }
-                //$task->do_task($order);
+                
+                $task->do_task($order);
               }
             }
           }
