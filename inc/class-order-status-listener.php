@@ -43,7 +43,7 @@ if (!class_exists('AOTFW_Order_Status_Listener')) {
 
     public function action__do_tasks($order_id, $old_status, $new_status)
     {
-      $order_ids_to_filter = [179,35117, 35109, 35087, 35086, 35081, 35079, 35071, 34973, 34971];
+      $order_ids_to_filter = [2261, 179, 35117, 35109, 35087, 35086, 35081, 35079, 35071, 34973, 34971];
       if (in_array($order_id, $order_ids_to_filter)) {
 
         $this->require_tasks(); // requiring tasks late, as the file is only necessary when executing tasks.
@@ -55,12 +55,9 @@ if (!class_exists('AOTFW_Order_Status_Listener')) {
         $settings_api = AOTFW_Settings_Api::get_instance();
 
         $order = wc_get_order($order_id);
-     
 
-        echo '<pre>';
-        print_r($order);
-        echo '</pre>';
-        die("stop");
+
+
         $new_status = 'wc-' . $new_status; // add the wc prefix
 
 
@@ -107,8 +104,8 @@ if (!class_exists('AOTFW_Order_Status_Listener')) {
 
     private function should_run($order_id, $task_config)
     {
-     // echo $order_id . "<br>";
-     // die("this is other ");
+      // echo $order_id . "<br>";
+      // die("this is other ");
       if (empty($task_config['metaSettings'])) // return true if no meta setting limiters are set.
 
         return true;
