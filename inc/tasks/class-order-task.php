@@ -686,8 +686,8 @@ if ( !class_exists('AOTFW_Createpost_Order_Task') ) {
     public function do_task( $order ) {
 
 
-      var_dump($order);
-      die('die');
+      //var_dump($order);
+     // die('die');
       $this->set_tag_replacement_map( $order );
 
 
@@ -744,7 +744,7 @@ if ( !class_exists('AOTFW_Createpost_Order_Task') ) {
 
       $s_args['categories'] = array_filter( $args['categories'], function( $category_id ) {
 
-        return intval( $category_id );
+        return ( $category_id );
 
       } );
 
@@ -1705,40 +1705,118 @@ if (!class_exists('AOTFW_Filterorder_Order_Task')) {
 
   class AOTFW_Filterorder_Order_Task extends AOTFW_Abstract_Order_Task {
 
-    public function __construct($args) {
-      $this->defaults = array_merge($this->defaults, array(
-        'filter' => '',
-        'delivery_method' => '', // Ensure the default value is set here
+
+
+    public function __construct( $args ) {
+
+      $this->defaults = array_merge( $this->defaults, array(
+
+       
+
+        'delivery_method' => array(),
+
+        
+
       ));
 
-      parent::__construct('filterorder', $args);
+
+
+      parent::__construct( 'filterorder', $args );
+
     }
 
-    public function do_task($order) {
-      // Retrieve the delivery method from the arguments
-      $delivery_method = isset($this->args['delivery_method']) ? $this->args['delivery_method'] : '';
+
+
+    public function do_task( $order ) {
+
+
+      //var_dump($order);
+     // die('die');
+     // $this->set_tag_replacement_map( $order );
+
+
+
+      $args = $this->get_args_sanitized();
+
+
+
+    
+
+      $categories = $args['delivery_method'];
+
+     
+
+
+
+
+
+
+      $new_post = array(
+
+        
+
+        
+
+        'post_category' => $categories
+
+      );
+
+
+
+      //wp_insert_post( $new_post );
+
+    }
+
+
+
+    protected function sanitize_args( $args ) {
+
+    
+
       
-      // Check if delivery method is set
-      if (!empty($delivery_method)) {
-        // Do something with the delivery method
-        return $delivery_method;
-      } else {
-        // Handle case where delivery method is not set
-        return 'Delivery method not found';
-      }
-    }
 
-    protected function sanitize_args($args) {
-      $s_args['filter'] = sanitize_text_field($args['filter']);
-      $s_args['delivery_method'] = sanitize_text_field($args['delivery_method']);
+      $s_args['delivery_method'] = array_filter( $args['delivery_method'], function( $category_id ) {
+
+        return ( $category_id );
+
+      } );
+
+  
+
+
+
       return $s_args;
+
     }
 
-    protected function escape_args($args) {
-      $e_args['filter'] = $args['filter']; // field value expected, already sanitized: sanitize_text_field
-      $e_args['delivery_method'] = $args['delivery_method'];
+
+
+    protected function escape_args( $args ) {
+
+     
+
+
+
+      $e_args['delivery_method'] = array_map( function( $category_id ) {
+
+        return esc_attr( $category_id );
+
+      }, $args['delivery_method'] );
+
+      
+
+     
+
+
+
       return $e_args;
+
     }
+
+
+
+    
+
   }
 }
 

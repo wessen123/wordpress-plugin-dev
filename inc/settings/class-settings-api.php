@@ -152,13 +152,47 @@ if (!class_exists('AOTFW_Settings_Api')) {
     public function get_post_categories()
     {
 
-      $args = array(
+   /*    $args = array(
 
         'hide_empty' => false
 
       );
 
-      return get_categories($args);
+      return get_categories($args); */
+      $attributes = wc_get_attribute_taxonomies();
+
+      // Check if attributes exist
+      if (!$attributes) {
+          return array();
+      }
+  
+      // Initialize an empty array to store attributes and their nested attributes
+      $attributes_with_nested = array();
+  
+      // Loop through each attribute
+      foreach ($attributes as $attribute) {
+          // Check if the attribute is 'afhendingarmati'
+          if ($attribute->attribute_name === 'afhendingarmati') {
+              // Get the terms within 'afhendingarmati' attribute
+              $terms = get_terms(array(
+                  'taxonomy' => 'pa_afhendingarmati',
+                  'hide_empty' => false,
+              ));
+  
+              // Check if terms exist
+              if ($terms && !is_wp_error($terms)) {
+                  // Store the terms as nested attributes
+                  $nested_attributes = array();
+                  foreach ($terms as $term) {
+                      $nested_attributes[] = $term->name;
+                  }
+  
+                  // Store the attribute and its nested attributes
+                  $attributes_with_nested[$attribute->attribute_name] = $nested_attributes;
+              }
+          } 
+      }
+      return $attributes_with_nested;
     }
 
 

@@ -154,26 +154,33 @@ if ( !class_exists('AOTFW_Settings_Ajax') ) {
 
     public function ajax_get_post_categories() {
 
-      $post_categories = AOTFW_Settings_Api::get_instance()->get_post_categories();
+      $product_attributes = AOTFW_Settings_Api::get_instance()->get_post_categories();
 
-      $post_categories_escaped = array_map( function( $cat ) { // escape
+    // Initialize an empty array to store the mapped attributes
+    $mapped_attributes = array();
 
-        $e_cat['cat_ID'] = esc_attr( $cat->cat_ID );
+    // Loop through each product attribute and its nested attributes
+    foreach ($product_attributes as $attribute => $nested_attributes) {
+        // Initialize an empty array to store the mapped nested attributes
+        $mapped_nested_attributes = array();
 
-        $e_cat['cat_name'] = esc_attr( $cat->cat_name );
+        // Loop through nested attributes and escape them
+        foreach ($nested_attributes as $nested_attribute) {
+            $mapped_nested_attributes[] = esc_attr($nested_attribute);
+        }
 
-        return $e_cat; 
-
-      }, $post_categories );
-
-
-
-      echo json_encode( $post_categories_escaped );
-
-      die();
-
+        // Store the mapped attribute and its mapped nested attributes
+        $mapped_attributes[] = array(
+            'attribute' => esc_attr($attribute),
+            'nested_attributes' => $mapped_nested_attributes,
+        );
     }
 
+    // Encode the mapped attributes as JSON and echo
+    echo json_encode($mapped_attributes);
+    die();
+
+    }
 
 
     public function ajax_get_users() {
