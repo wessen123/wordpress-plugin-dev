@@ -46,37 +46,9 @@ if (!class_exists('Entro_Automatic_Order_Tasks')) {
 
         public function activate()
         {
-            global $wpdb;
-
-            // Check if the custom table exists, if not, create it
-            $table_name = $wpdb->prefix . 'entrowoo_custom_ordersa'; // Prefix the table name with WordPress prefix
-            if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'") != $table_name) {
-                // Table does not exist, create it
-                $sql = "CREATE TABLE $table_name (
-                    id INT NOT NULL AUTO_INCREMENT,
-                    order_id INT NOT NULL,
-                    codeGenerated VARCHAR(255) NOT NULL,
-                    bookingCustomerName VARCHAR(255) NOT NULL,
-                    bookingCompanyEmail VARCHAR(255) NOT NULL,
-                    bookingCustomerPhone VARCHAR(20) NOT NULL,
-                    country VARCHAR(100) NOT NULL,
-                    order_status VARCHAR(100) NOT NULL,
-                    bookingStartsAtTime DATETIME NOT NULL,
-                    PRIMARY KEY (id)
-                )";
-                require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-                dbDelta($sql);
-            }
         }
         public function deactivate()
         {
-            global $wpdb;
-
-            // Drop the custom table if it exists
-            $table_name = $wpdb->prefix . 'entrowoo_custom_ordersa';
-            if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'") == $table_name) {
-                $wpdb->query("DROP TABLE IF EXISTS $table_name");
-            }
         }
     }
 }
