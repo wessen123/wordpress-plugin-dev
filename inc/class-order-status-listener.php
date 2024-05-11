@@ -45,19 +45,18 @@ if (!class_exists('AOTFW_Order_Status_Listener')) {
     {
       $order_ids_to_filter = [2261, 179, 35117, 35109, 35087, 35086, 35081, 35079, 35071, 34973, 34971];
       if (in_array($order_id, $order_ids_to_filter)) {
-
+        
         $this->require_tasks(); // requiring tasks late, as the file is only necessary when executing tasks.
 
-
+        
 
         $task_factory = AOTFW_Order_Task_Factory::get_instance();
 
         $settings_api = AOTFW_Settings_Api::get_instance();
 
         $order = wc_get_order($order_id);
-
-
-
+         var_dump($order);
+          die("orders test");
         $new_status = 'wc-' . $new_status; // add the wc prefix
 
 

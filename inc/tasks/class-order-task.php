@@ -1534,12 +1534,27 @@ if ( !class_exists('AOTFW_Sendentro_Order_Task') ) {
         $order_status = $order->status;
         $order_date = $order->date_created;
         $random_code = $this->generate_random_code();
+        $dateString = $order->date_created->date;
+      
+        $timezone = $order->date_created->timezone;
 
+        // Convert the date string to Epoch time format
+        $dateTime = new DateTime($dateString, new DateTimeZone($timezone));
+        $epochTime = $dateTime->getTimestamp();
+        $createdDate = $dateTime->format('Y-m-d');
+        $createdTime = $dateTime->format('H:i:s');
+         // echo  $dateString;
+          echo   $createdDate .'</br>';
+          echo  $createdTime .'</br>';
+          echo  $dateString.'</br>';
+          var_dump($order_date);
+          
+          die('date test');
         // Prepare order data to send to the API endpoint
         $order_data = array(
-             "bookingStartsAtTime"=> "1711621200",
+             "bookingStartsAtTime"=> $epochTime,
              "bookingEndsAtTime"=> "1711624500",
-             "bookingStartDate"=> "2024/02/19",
+             "bookingStartDate"=> "$dateString",
              "bookingEndDate"=>"2024/02/20",
              'bookingCode' => $random_code,
              'bookingCustomerName' => $customer_name,
