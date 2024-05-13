@@ -19,6 +19,8 @@ You can send emails, Send to Entro API, add custom order fields and much more. E
  
 -- Automatic Order Tasks --
 + **Send Email** - send a message to anyone with information about the order.
++ **Delevery Method** - select delevery method for orders to transfer.
++ **Store The Order** - select delevery method for orders to transfer.
 + **Create Post** - insert your own content, you can also set the order's customer as the post author.
 + **Change Shipping Method** - switch to a new shipping method automatically.
 + **Log To File** - write a fully customizable log that you can view and download at any time.
