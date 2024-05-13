@@ -2,8 +2,8 @@
 
 Stable tag: 2.0.0 
 Requires at least: 5.6  
-Tested up to: 6.4.3 
-Requires PHP: 7.4  
+Tested up to: 6.6.4
+Requires atleast PHP: 7.4  
 
 Tags: order status, send email, create post, shipping method, logging, custom order field, webhook, woocommerce, automatic actions
 Contributors: wondwessen
@@ -19,7 +19,8 @@ You can send emails, Send to Entro API, add custom order fields and much more. E
  
 -- Automatic Order Tasks --
 + **Send Email** - send a message to anyone with information about the order.
-+ **Delevery Method** - select delevery method for orders to transfer.
++ **Send Sms** - send sms message to anyone with information about the order.
++ **Order Delevery Method** - select delevery method for orders to transfer.
 + **Store The Order** - select delevery method for orders to transfer.
 + **Create Post** - insert your own content, you can also set the order's customer as the post author.
 + **Change Shipping Method** - switch to a new shipping method automatically.
@@ -27,7 +28,7 @@ You can send emails, Send to Entro API, add custom order fields and much more. E
 + **Custom Order Field** - add custom fields to your order with extra information.
 + **Send Webhook** - notify someone when an order reaches your chosen status.
 + **Trash Order** - automatically send the order to trash
-Supporting the tasks above are powerful but easy to use tags that add dynamic values to your content.
+.
 
 ### Usage
 
